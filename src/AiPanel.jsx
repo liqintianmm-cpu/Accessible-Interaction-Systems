@@ -1,25 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-
-function makeAssistantReply({ dishName, dishTags, selectedAllergens }) {
-  const hits = dishTags.filter((t) => selectedAllergens.has(t));
-  const hasRisk = hits.length > 0;
-
-  if (!dishName) {
-    return `Tell me the dish name, and I’ll check allergen risks and suggest safer options.`;
-  }
-
-  if (!hasRisk) {
-    return `✅ Looks OK: "${dishName}" doesn’t match your selected allergens.
-If you want, ask the server to confirm sauces/marinades to be safe.`;
-  }
-
-  return `⚠️ Potential risk for "${dishName}": matches ${hits.join(", ")}.
-Safer options:
-• Ask for NO ${hits.join(" / ")} (if possible)
-• Request sauce on the side
-• Choose a simpler dish (grilled meat + veggies)
-Would you like a short message you can show the staff?`;
-}
+import { generateRiskExplanation } from "./riskEngine";
 
 export default function AiPanel({
   open,
@@ -32,7 +12,11 @@ export default function AiPanel({
 
   const starter = useMemo(() => {
     const { dishName, dishTags, selectedAllergens } = context || {};
-    return makeAssistantReply({ dishName, dishTags, selectedAllergens });
+    const dish = {
+      name: dishName,
+      tags: dishTags || [],
+    };
+    return generateRiskExplanation(dish, selectedAllergens || new Set());
   }, [context]);
 
   useEffect(() => {
@@ -66,7 +50,13 @@ export default function AiPanel({
           ? `Here’s a staff-friendly message:\n"Hi! I’m allergic to ${[...selectedAllergens].join(
               ", "
             )}. Could you confirm whether '${dishName}' contains any of these, and help me avoid cross-contact? Thanks!"`
-          : makeAssistantReply({ dishName, dishTags, selectedAllergens }),
+          : generateRiskExplanation(
+              {
+                name: dishName,
+                tags: dishTags || [],
+              },
+              selectedAllergens || new Set()
+            ),
       ts: Date.now() + 1,
     };
 

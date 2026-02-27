@@ -174,3 +174,302 @@
   font-size: 12px;
   opacity: 0.6;
 }
+
+/* Matched Allergens Section */
+.matchedSection {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 120, 120, 0.2);
+}
+
+.matchedList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.matchedTag {
+  font-size: 11px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 120, 120, 0.4);
+  background: rgba(255, 120, 120, 0.15);
+  color: rgba(255, 200, 200, 0.95);
+}
+
+/* LLM Section */
+.llmSection {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.llmHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.llmHeaderLeft {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sectionLabel {
+  font-size: 12px;
+  font-weight: 600;
+  opacity: 0.9;
+}
+
+.whyButton {
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  color: inherit;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 11px;
+  opacity: 0.85;
+  transition: all 0.2s;
+}
+
+.whyButton:hover {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.analyzeButton {
+  cursor: pointer;
+  border: 1px solid rgba(120, 180, 255, 0.3);
+  background: rgba(120, 180, 255, 0.1);
+  color: inherit;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.analyzeButton:hover:not(:disabled) {
+  background: rgba(120, 180, 255, 0.15);
+  border-color: rgba(120, 180, 255, 0.4);
+}
+
+.analyzeButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Loading State */
+.loadingState {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  font-size: 12px;
+  opacity: 0.75;
+}
+
+.loadingSpinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-top-color: rgba(120, 180, 255, 0.8);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* LLM Results */
+.llmResults {
+  margin-top: 12px;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.resultSection {
+  margin-bottom: 12px;
+}
+
+.resultSection:last-of-type {
+  margin-bottom: 0;
+}
+
+.resultLabel {
+  font-size: 13px;
+  font-weight: 600;
+  opacity: 0.9;
+  margin-bottom: 14px;
+}
+
+.resultText {
+  font-size: 12px;
+  line-height: 1.5;
+  opacity: 0.9;
+}
+
+.potentialList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.potentialTag {
+  font-size: 11px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 200, 120, 0.4);
+  background: rgba(255, 200, 120, 0.15);
+  color: rgba(255, 230, 180, 0.95);
+}
+
+.evidenceList {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.evidenceItem {
+  font-size: 11px;
+  font-style: italic;
+  opacity: 0.8;
+  padding-left: 8px;
+  border-left: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.confidenceBadge {
+  display: inline-block;
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-weight: 600;
+}
+
+.confidenceBadge.high {
+  background: rgba(255, 120, 120, 0.15);
+  border-color: rgba(255, 120, 120, 0.35);
+  color: rgba(255, 200, 200, 0.95);
+}
+
+.confidenceBadge.medium {
+  background: rgba(255, 200, 120, 0.15);
+  border-color: rgba(255, 200, 120, 0.35);
+  color: rgba(255, 230, 180, 0.95);
+}
+
+.confidenceBadge.low {
+  background: rgba(200, 200, 255, 0.15);
+  border-color: rgba(200, 200, 255, 0.35);
+  color: rgba(220, 220, 255, 0.95);
+}
+
+.allergenItem {
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.allergenItem:last-of-type {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.allergenHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.allergenName {
+  font-size: 13px;
+  font-weight: 600;
+  opacity: 0.95;
+}
+
+.riskReason {
+  font-size: 12px;
+  line-height: 1.5;
+  opacity: 0.9;
+  margin-bottom: 6px;
+}
+
+.evidenceQuote {
+  font-size: 11px;
+  opacity: 0.65;
+  font-style: italic;
+  margin-top: 4px;
+}
+
+.verificationSection {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.verificationLabel {
+  font-size: 12px;
+  font-weight: 600;
+  opacity: 0.9;
+  margin-bottom: 8px;
+}
+
+.verificationList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.verificationItem {
+  font-size: 12px;
+  opacity: 0.85;
+  padding: 6px 8px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 6px;
+  border-left: 2px solid rgba(120, 180, 255, 0.4);
+}
+
+.disclaimer {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 11px;
+  opacity: 0.7;
+  font-style: italic;
+}
+
+.copyButton {
+  margin-top: 10px;
+  cursor: pointer;
+  border: 1px solid rgba(120, 255, 180, 0.3);
+  background: rgba(120, 255, 180, 0.1);
+  color: inherit;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 500;
+  width: 100%;
+  transition: all 0.2s;
+}
+
+.copyButton:hover {
+  background: rgba(120, 255, 180, 0.15);
+  border-color: rgba(120, 255, 180, 0.4);
+}
