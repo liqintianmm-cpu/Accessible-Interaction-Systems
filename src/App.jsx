@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import "./App.css";
 import { analyzeDishWithLLM } from "./llmAnalysis";
+import { evaluateDishRisk } from "./riskEngine";
 
 const ALLERGENS = [
   "Peanuts",
@@ -53,8 +54,10 @@ function DishCard({ item, selectedAllergens }) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   // Rule-based matched allergens
-  const matchedAllergens = item.tags.filter((t) => selectedAllergens.has(t));
-  const hasMatchedAllergens = matchedAllergens.length > 0;
+  const { matchedAllergens, hasRisk: hasMatchedAllergens } = evaluateDishRisk(
+    item,
+    selectedAllergens
+  );
 
   const handleAnalyze = async () => {
     setIsAnalyzing(true);
